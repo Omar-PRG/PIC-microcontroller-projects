@@ -1,0 +1,8 @@
+_main: CODE, 1775 0 8
+_init_porta: CODE, 1770 0 5
+_init_portb: CODE, 1783 0 15
+_minuterie: CODE, 1845 0 85
+_tempo_p_ms: CODE, 1818 0 27
+_led: CODE, 1930 0 118
+_tempo1ms: CODE, 1798 0 20
+Total: 278
