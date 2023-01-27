@@ -1,0 +1,187 @@
+/////////////////////////TIMER0
+
+#include "pic.h"		// vos headers associés
+#include "pic168xa.h"		// à vos projets
+
+char	debug	@0x70;		// éviter conflits avec ICD3
+//void init (void);
+//
+//void tempo1s(void);
+//void tempos (int compteur);
+
+void init(void)
+{
+TRISB=0;
+RB0=0;
+}
+
+void tempo1s (void)
+{
+init();
+T0CS=0;
+T0SE=0;
+
+PSA=0;
+PS2=1;
+PS1=1;  
+PS0=1;
+
+TMR0=0;
+T0IF=0;
+
+for( int i=0 ;i<15 ;i++)
+{
+while(!T0IF)  //si le temps s
+
+T0IF=0;
+TMR0=0;
+}
+
+PS2=1;
+PS1=1;
+PS0=0;
+TMR0=128;
+T0IF=0;
+while(!T0IF);
+
+}
+
+
+
+void tempos (int compteur)
+{
+for (int k=0;k<compteur;k++)
+{
+tempo1s();
+
+}
+
+}
+
+void main(void)
+{
+tempo1s();
+
+int k=0;
+while(1)
+{
+init();
+tempos(4);
+RB0= 0;
+tempos(2);
+}
+ 
+}
+
+
+
+
+/////////////////////////TIMER1
+
+
+#include "pic.h"		// vos headers associés
+#include "pic168xa.h"		// à vos projets
+int valeur=0;
+int temps=0;
+
+
+
+
+void affiche_seconde(unsigned char seconde);
+char	debug	@0x70;		// éviter conflits avec ICD3*
+
+void init(void)
+{
+TRISD=0;
+TRISB=0;
+RB0=0;
+RB1=0;
+RB2=0;         ////initialisation
+RB3=0;
+
+}
+
+void interrupt timer0IT(void)
+{
+
+if (TMR1IF && TMR1IE)
+{
+TMR1IF=0;
+if(valeur==0)
+{
+TMR1H=0x17;
+TMR1L=0x94;
+valeur=1;
+}
+else 
+{	
+TMR1H=0;
+TMR1L=0;
+temps ++;
+valeur=0;
+affiche_seconde(temps);
+
+ }
+}
+}
+
+
+void affiche_seconde(unsigned char seconde)
+{
+switch(seconde)
+{
+case 0 : PORTB=0xF0;break;
+case 1 : PORTB=0xF1;break;
+case 2 : PORTB=0xF2;break;
+case 3 : PORTB=0xF3;break;
+case 4 : PORTB=0xF4;break;
+case 5 : PORTB=0xF5;break;
+case 6 : PORTB=0xF6;break;
+case 7 : PORTB=0xF7;break;
+case 8 : PORTB=0xF8;break;
+case 9 : PORTB=0xF9;break;
+case 10 : PORTB=0xFA;break;
+case 11 : PORTB=0xFB;break;
+case 12 : PORTB=0xFC;break;
+case 13 : PORTB=0xFD;break;
+case 14 : PORTB=0xFE;break;
+case 15 : PORTB=0xFF;break;
+}
+}
+
+
+
+
+void main(void)
+{
+
+TRISD=0;
+TRISB=0xF0;
+T1CKPS1=1;
+T1CKPS0=1;      /////// P=8;
+
+T1OSCEN=0;
+T1SYNC=0;
+TMR1CS=0;     
+TMR1ON=0;
+TMR1IF=0;
+TMR1H=0x00;
+TMR1L=0x00;
+
+TMR1IF=0;
+TMR1IE=1;
+PEIE=1;
+GIE=1;
+TMR1ON=1;
+while(1);
+}
+
+
+
+
+
+
+
+
+
+
