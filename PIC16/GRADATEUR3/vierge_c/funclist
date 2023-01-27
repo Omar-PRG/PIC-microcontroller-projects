@@ -1,0 +1,13 @@
+___ftpack: CODE, 1442 0 124
+_init_port: CODE, 1225 0 12
+_main: CODE, 1566 0 127
+_tempo_1_ms: CODE, 1251 0 15
+_init_timer0: CODE, 1237 0 14
+_init_timer2: CODE, 1216 0 9
+_tempo_p_ms: CODE, 1266 0 31
+_CCP: CODE, 1387 0 55
+___ftmul: CODE, 1828 0 220
+___awtoft: CODE, 1340 0 47
+___wmul: CODE, 1297 0 43
+___fttol: CODE, 1693 0 135
+Total: 832
