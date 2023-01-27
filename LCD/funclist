@@ -1,0 +1,14 @@
+_ecriture_commande: CODE, 1605 0 31
+_ecran_gauche: CODE, 1686 0 7
+_strlen: CODE, 1812 0 43
+_tempo_N_ms: CODE, 1572 0 33
+_init_PORTD: CODE, 1693 0 7
+_main: CODE, 1769 0 43
+_tempo_1_ms: CODE, 1678 0 8
+_print_char: CODE, 1636 0 31
+_print_string: CODE, 1855 0 47
+_lecture_commande: CODE, 1902 0 53
+_attente_bf: CODE, 1667 0 11
+_init_LCD: CODE, 1955 0 93
+_allume_LCD: CODE, 1706 0 4
+Total: 411
