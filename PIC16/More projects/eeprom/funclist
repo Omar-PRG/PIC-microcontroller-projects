@@ -1,0 +1,5 @@
+_main: CODE, 1955 0 12
+_write_data_eeprom: CODE, 2011 0 37
+_write_and_verify_data_eeprom: CODE, 1987 0 24
+_read_data_eeprom: CODE, 1967 0 20
+Total: 93
